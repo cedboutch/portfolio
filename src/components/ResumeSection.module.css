@@ -1,0 +1,119 @@
+.resumeSection {
+  padding: 3rem 5%;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #E63946, #F8B400);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.resumeBox {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+}
+
+.tabButtons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.tabButton {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+  color: #FFFFFF;
+  border-color: rgba(230, 57, 70, 0.6);
+}
+
+.activeTab {
+  background: #E63946;
+  color: #FFFFFF;
+  border-color: #E63946;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+}
+
+.tabContent {
+  display: grid;
+  gap: 1rem;
+}
+
+.itemCard {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.itemCard:hover {
+  border-color: rgba(230, 57, 70, 0.4);
+  transform: translateY(-2px);
+}
+
+.itemCardContent {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.logoContainer {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.companyLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.itemBody {
+  flex: 1;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.itemHeader h3 {
+  font-size: 1.1rem;
+}
+
+.itemHeader span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.itemPlace {
+  color: #F8B400;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+}
