@@ -5,7 +5,7 @@
 .heading {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(to right, #E63946, #F8B400);
+  background: linear-gradient(to right, #FFC1CC, #A8DADC);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -13,9 +13,9 @@
 }
 
 .resumeBox {
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(228, 228, 228, 0.15);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(228, 228, 228, 0.03);
   padding: 1.5rem;
 }
 
@@ -26,9 +26,9 @@
 }
 
 .tabButton {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(228, 228, 228, 0.2);
   background: transparent;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(228, 228, 228, 0.8);
   padding: 0.55rem 1.1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -37,15 +37,15 @@
 }
 
 .tabButton:hover {
-  color: #FFFFFF;
-  border-color: rgba(230, 57, 70, 0.6);
+  color: #E4E4E4;
+  border-color: rgba(179, 156, 208, 0.6);
 }
 
 .activeTab {
-  background: #E63946;
-  color: #FFFFFF;
-  border-color: #E63946;
-  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+  background: #B39CD0;
+  color: #2C2C2C;
+  border-color: #B39CD0;
+  box-shadow: 0 4px 12px rgba(179, 156, 208, 0.3);
 }
 
 .tabContent {
@@ -54,15 +54,15 @@
 }
 
 .itemCard {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(228, 228, 228, 0.12);
   border-radius: 10px;
   padding: 1.2rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(228, 228, 228, 0.02);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .itemCard:hover {
-  border-color: rgba(230, 57, 70, 0.4);
+  border-color: rgba(179, 156, 208, 0.4);
   transform: translateY(-2px);
 }
 
@@ -78,7 +78,7 @@
   height: 96px;
   border-radius: 12px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(228, 228, 228, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,11 +109,11 @@
 
 .itemHeader span {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(228, 228, 228, 0.6);
 }
 
 .itemPlace {
-  color: #F8B400;
+  color: #A8DADC;
   margin-bottom: 0.45rem;
   font-weight: 600;
 }

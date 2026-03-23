@@ -9,16 +9,16 @@
   z-index: 1000;
   
   /* Glassmorphism Effect */
-  background: rgba(27, 27, 27, 0.85);
+  background: rgba(44, 44, 44, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(228, 228, 228, 0.1);
 }
 
 .navBrand .logoText {
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(to right, #F8B400, #E63946);
+  background: linear-gradient(to right, #A8DADC, #FFC1CC);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -36,16 +36,16 @@
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.3s ease;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(228, 228, 228, 0.7);
 }
 
 .navItem:hover {
-  color: #F8B400;
+  color: #A8DADC;
 }
 
 .specialBtn {
-  background: #F8B400;
-  color: #1B1B1B !important;
+  background: #B39CD0;
+  color: #2C2C2C !important;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   font-weight: 600;
@@ -53,8 +53,8 @@
 }
 
 .specialBtn:hover {
-  background: #E63946;
-  color: #FFFFFF !important;
+  background: #FFC1CC;
+  color: #2C2C2C !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 193, 204, 0.3);
 }
