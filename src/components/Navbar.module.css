@@ -2,59 +2,131 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5%;
+  padding: 1rem 5%;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  
+
   /* Glassmorphism Effect */
-  background: rgba(44, 44, 44, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(228, 228, 228, 0.1);
+  background: rgba(44, 44, 44, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(228, 228, 228, 0.06);
 }
 
-.navBrand .logoText {
-  font-size: 1.8rem;
-  font-weight: 800;
-  background: linear-gradient(to right, #A8DADC, #FFC1CC);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
-}
-
-.navLinks {
+/* Logo */
+.navBrand a {
   display: flex;
-  list-style: none;
-  gap: 2.5rem;
   align-items: center;
 }
 
-.navItem {
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-  color: rgba(228, 228, 228, 0.7);
+.logo {
+  height: 70px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
 }
 
+.logo:hover {
+  transform: scale(1.06);
+  filter: brightness(1.15);
+}
+
+/* Nav Links */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Nav Item — parentheses indicator */
+.navItem {
+  position: relative;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(228, 228, 228, 0.55);
+  transition: color 0.3s ease;
+  padding: 0.3rem 0;
+}
+
+.navItem::before,
+.navItem::after {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1.15rem;
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  opacity: 0;
+}
+
+.navItem::before {
+  content: '(';
+  margin-right: 0.4rem;
+  transform: translateX(6px);
+}
+
+.navItem::after {
+  content: ')';
+  margin-left: 0.4rem;
+  transform: translateX(-6px);
+}
+
+/* Hover — reveal parentheses */
 .navItem:hover {
+  color: #E4E4E4;
+}
+
+.navItem:hover::before {
+  opacity: 1;
+  transform: translateX(0);
   color: #A8DADC;
 }
 
+.navItem:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: #FFC1CC;
+}
+
+/* Active / Clicked — parentheses stay visible */
+.activeItem {
+  color: #E4E4E4;
+}
+
+.activeItem::before {
+  opacity: 1;
+  transform: translateX(0);
+  color: #A8DADC;
+}
+
+.activeItem::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: #FFC1CC;
+}
+
+/* Contact Me button */
 .specialBtn {
   background: #B39CD0;
   color: #2C2C2C !important;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  padding: 0.5rem 1.4rem;
+  border-radius: 20px;
   font-weight: 600;
+  letter-spacing: 0.06em;
   transition: all 0.3s ease;
+}
+
+.specialBtn::before,
+.specialBtn::after {
+  display: none;
 }
 
 .specialBtn:hover {
   background: #FFC1CC;
   color: #2C2C2C !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 193, 204, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 193, 204, 0.25);
 }
