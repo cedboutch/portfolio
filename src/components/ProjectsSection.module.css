@@ -1,0 +1,128 @@
+.projectsSection {
+  padding: 3rem 5%;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #E4E4E4;
+  margin-bottom: 1.5rem;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.projectCard {
+  border: 1px solid rgba(228, 228, 228, 0.12);
+  border-top: 3px solid var(--accent-color);
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: rgba(228, 228, 228, 0.02);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.projectCard:hover {
+  border-color: rgba(179, 156, 208, 0.4);
+  border-top-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.languageLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: rgba(228, 228, 228, 0.75);
+  line-height: 1.5;
+}
+
+.inProgressBadge {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  background: rgba(196, 51, 62, 0.15);
+  color: #C4333E;
+  border: 1px solid rgba(196, 51, 62, 0.3);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.techBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem 0.25rem 0.45rem;
+  border-radius: 14px;
+  border: 1px solid rgba(228, 228, 228, 0.1);
+  background: rgba(228, 228, 228, 0.03);
+  color: rgba(228, 228, 228, 0.75);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: default;
+  transition: border-color 0.12s ease-out, background 0.12s ease-out;
+}
+
+.techBadge:hover {
+  border-color: rgba(179, 156, 208, 0.5);
+  background: rgba(179, 156, 208, 0.1);
+}
+
+.techBadgeIcon {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.projectLink {
+  font-size: 0.8rem;
+  color: #A8DADC;
+  text-decoration: none;
+  margin-top: auto;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+
+.projectLink:hover {
+  color: #FFC1CC;
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .projectGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+}
