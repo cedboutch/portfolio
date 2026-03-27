@@ -1,0 +1,135 @@
+.section {
+  padding: 1rem 5% 4rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #FFC1CC, #A8DADC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
+}
+
+.categoriesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Category row */
+.category {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.categoryLabel {
+  flex-shrink: 0;
+  width: 180px;
+  padding-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(228, 228, 228, 0.35);
+  position: relative;
+  padding-left: 0.85rem;
+}
+
+.categoryLabel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(to bottom, #FFC1CC, #B39CD0);
+  opacity: 0.6;
+}
+
+.pillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+/* Pill badge */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.95rem 0.42rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid rgba(228, 228, 228, 0.1);
+  background: rgba(228, 228, 228, 0.03);
+  color: rgba(228, 228, 228, 0.82);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: default;
+  animation: pillReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both;
+  transition: transform 0.12s ease-out,
+              border-color 0.12s ease-out,
+              box-shadow 0.12s ease-out,
+              background 0.12s ease-out;
+}
+
+@keyframes pillReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pill:hover {
+  border-color: rgba(179, 156, 208, 0.5);
+  background: rgba(179, 156, 208, 0.1);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(179, 156, 208, 0.18),
+              0 0 0 1px rgba(179, 156, 208, 0.08);
+}
+
+.pillIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.pillText {
+  white-space: nowrap;
+}
+
+/* Fallback icon when devicon image fails */
+.fallbackIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: rgba(228, 228, 228, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .category {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .categoryLabel {
+    width: auto;
+    padding-top: 0;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+}
