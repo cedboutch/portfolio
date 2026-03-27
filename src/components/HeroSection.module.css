@@ -137,3 +137,56 @@
   object-fit: cover;
   object-position: center top;
 }
+
+/* Tablet / Mobile */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2rem;
+    min-height: auto;
+    padding-top: 1.5rem;
+  }
+
+  .heroContent {
+    max-width: 100%;
+  }
+
+  .contactInfo {
+    align-items: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  .heroImageContainer {
+    flex: none;
+  }
+
+  .imageRing {
+    width: 260px;
+    height: 260px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .imageRing {
+    width: 220px;
+    height: 220px;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+}

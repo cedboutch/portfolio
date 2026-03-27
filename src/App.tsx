@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import TechStack from './components/TechStack'
 import ResumeSection from './components/ResumeSection'
+import ProjectsSection from './components/ProjectsSection'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <HeroSection />
         <TechStack />
         <ResumeSection />
+        <ProjectsSection />
       </main>
+      <Footer />
     </div>
   )
 }
