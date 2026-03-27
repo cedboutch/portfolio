@@ -15,19 +15,20 @@
 .categoriesGrid {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.5rem;
 }
 
 /* Category row */
 .category {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
+  min-height: 44px;
 }
 
 .categoryLabel {
   flex-shrink: 0;
-  width: 180px;
+  width: 210px;
   padding-top: 0.35rem;
   font-size: 0.78rem;
   font-weight: 600;
