@@ -6,7 +6,6 @@ const HeroSection: React.FC = () => {
   return (
     <section id="about" className={styles.heroContainer}>
       <div className={styles.heroContent}>
-        <span className={styles.badge}>Bonjour, je m'appelle</span>
         <h1 className={styles.name}>Cédric Bouchard</h1>
         <p className={styles.subtitle}>Étudiant en génie logiciel</p>
 
@@ -29,7 +28,7 @@ const HeroSection: React.FC = () => {
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span>Quebec, Canada</span>
+            <span>Québec, Canada</span>
           </div>
         </div>
 
