@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ResumeSection.module.css";
-import benevaLogo from "../assets/BenevaLogo.png";
-import idexiaLogo from "../assets/IdexiaLogo.png";
+import benevaLogo from "../assets/benevaLogo.png";
+import idexiaLogo from "../assets/idexiaLogo.png";
 import ulavalLogo from "../assets/ulavalLogo.png";
 import cndfLogo from "../assets/cndfLogo.png";
 
