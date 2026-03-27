@@ -65,6 +65,7 @@
 
 .itemCardContent {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
   align-items: flex-start;
 }
@@ -89,6 +90,8 @@
 
 .itemBody {
   flex: 1;
+  min-width: 0;
+  flex-basis: 200px;
 }
 
 .itemHeader {
@@ -159,4 +162,49 @@
   border-radius: 2px;
   flex-shrink: 0;
   object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .resumeBox {
+    padding: 1rem;
+  }
+
+  .itemCardContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logoContainer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .itemBody {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .itemHeader {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .itemHeader h3 {
+    font-size: 1rem;
+  }
+
+  .detailList {
+    text-align: left;
+    font-size: 0.82rem;
+  }
+
+  .techBadges {
+    justify-content: center;
+  }
 }
