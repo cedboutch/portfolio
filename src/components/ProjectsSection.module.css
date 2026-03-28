@@ -59,11 +59,12 @@
   font-size: 0.65rem;
   padding: 0.15rem 0.5rem;
   border-radius: 10px;
-  background: rgba(196, 51, 62, 0.15);
-  color: #C4333E;
-  border: 1px solid rgba(196, 51, 62, 0.3);
+  background: rgba(255, 179, 186, 0.15);
+  color: #FFB3BA;
+  border: 1px solid rgba(255, 179, 186, 0.3);
   font-weight: 600;
   margin-left: auto;
+  animation: pulseBadge 2s infinite ease-in-out;
 }
 
 .techBadges {
@@ -124,5 +125,23 @@
 @media (max-width: 640px) {
   .projectGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes pulseBadge {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 179, 186, 0.4);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px 1px rgba(255, 179, 186, 0.1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 179, 186, 0);
   }
 }
