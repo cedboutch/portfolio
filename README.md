@@ -45,18 +45,3 @@ npm run preview
 ```bash
 npm run lint
 ```
-
-## Project Structure
-
-```
-src/
-├── assets/             # Static assets (images, etc.)
-├── components/         # React components with co-located CSS Modules
-│   ├── HeroSection.tsx
-│   ├── Navbar.tsx
-│   └── ResumeSection.tsx
-├── App.tsx             # Root application component
-├── App.css             # Global app styles
-├── main.tsx            # Application entry point
-└── index.css           # Global styles
-```

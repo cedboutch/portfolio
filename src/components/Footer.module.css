@@ -19,18 +19,6 @@
 /* Logo — large and centered */
 .logoLink {
   display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.logoLink:hover {
-  transform: scale(1.06);
-  filter: brightness(1.15);
-}
-
-.logo {
-  height: 120px;
-  width: auto;
-  display: block;
 }
 
 /* Copyright */

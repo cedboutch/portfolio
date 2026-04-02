@@ -30,7 +30,7 @@ const projects: Project[] = [
             { name: "Python", icon: "python" },
             { name: "ROS2", icon: "ros" },
         ],
-        accentColor: "#C4333E",
+        accentColor: "#FFB3BA",
         inProgress: true,
     },
     {
@@ -42,7 +42,7 @@ const projects: Project[] = [
             { name: "JavaScript", icon: "javascript" },
             { name: "Vue.js", icon: "vuejs" },
         ],
-        accentColor: "#5B9BD5",
+        accentColor: "#BAE1FF",
         link: "https://ufood-2025.vercel.app",
     },
     {
@@ -55,7 +55,7 @@ const projects: Project[] = [
             { name: "Docker", icon: "docker" },
             { name: "GitHub Actions", icon: "githubactions" },
         ],
-        accentColor: "#B06FE8",
+        accentColor: "#E2CBF7",
     },
     {
         title: "Simulateur de coupes CNC",
@@ -65,7 +65,7 @@ const projects: Project[] = [
         techBadges: [
             { name: "Java", icon: "java" },
         ],
-        accentColor: "#6B8CFF",
+        accentColor: "#C6E2E9",
     },
     {
         title: "Forum de discussion",
@@ -79,7 +79,7 @@ const projects: Project[] = [
             { name: "Vue.js", icon: "vuejs" },
             { name: "MySQL", icon: "mysql" },
         ],
-        accentColor: "#FFC1CC",
+        accentColor: "#FFC1CC", // Already pastel pink
     },
     {
         title: "Gestionnaire d'équipe de hockey",
@@ -89,7 +89,7 @@ const projects: Project[] = [
         techBadges: [
             { name: "C++", icon: "cplusplus" },
         ],
-        accentColor: "#A8DADC",
+        accentColor: "#A8DADC", // Already pastel teal
     },
     {
         title: "Jeu vidéo Quoridor",
@@ -99,7 +99,7 @@ const projects: Project[] = [
         techBadges: [
             { name: "Python", icon: "python" },
         ],
-        accentColor: "#B39CD0",
+        accentColor: "#B39CD0", // Already pastel lavander
     },
 ]
 

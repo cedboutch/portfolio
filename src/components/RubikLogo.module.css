@@ -1,0 +1,138 @@
+/* Container */
+.container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.container svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+/* ── Base transition for all sticker cells ── */
+.topCell1, .topCell2, .topCell3,
+.topCell4, .topCell5, .topCell6,
+.topCell7, .topCell8, .topCell9,
+.leftCell1, .leftCell2, .leftCell3,
+.leftCell4, .leftCell5, .leftCell6,
+.leftCell7, .leftCell8, .leftCell9,
+.rightCell1, .rightCell2, .rightCell3,
+.rightCell4, .rightCell5, .rightCell6,
+.rightCell7, .rightCell8, .rightCell9 {
+  transform: translate(0, 0);
+}
+
+/* ── Top face: float upward, staggered ── */
+.topCell1 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0s; }
+.topCell2 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.03s; }
+.topCell3 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s; }
+.topCell4 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s; }
+.topCell5 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.07s; }
+.topCell6 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.10s; }
+.topCell7 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s; }
+.topCell8 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.11s; }
+.topCell9 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.14s; }
+
+.container:hover .topCell1,
+.container:hover .topCell2,
+.container:hover .topCell3,
+.container:hover .topCell4,
+.container:hover .topCell5,
+.container:hover .topCell6,
+.container:hover .topCell7,
+.container:hover .topCell8,
+.container:hover .topCell9 {
+  transform: translate(0, -14px);
+}
+
+/* ── Left face: float outward left, staggered with offset ── */
+.leftCell1 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s; }
+.leftCell2 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.09s; }
+.leftCell3 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s; }
+.leftCell4 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.10s; }
+.leftCell5 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.13s; }
+.leftCell6 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.16s; }
+.leftCell7 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.14s; }
+.leftCell8 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.17s; }
+.leftCell9 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.20s; }
+
+.container:hover .leftCell1,
+.container:hover .leftCell2,
+.container:hover .leftCell3,
+.container:hover .leftCell4,
+.container:hover .leftCell5,
+.container:hover .leftCell6,
+.container:hover .leftCell7,
+.container:hover .leftCell8,
+.container:hover .leftCell9 {
+  transform: translate(-12px, 7px);
+}
+
+/* ── Right face: float outward right, staggered with offset ── */
+.rightCell1 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s; }
+.rightCell2 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.09s; }
+.rightCell3 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s; }
+.rightCell4 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.10s; }
+.rightCell5 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.13s; }
+.rightCell6 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.16s; }
+.rightCell7 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.14s; }
+.rightCell8 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.17s; }
+.rightCell9 { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.20s; }
+
+.container:hover .rightCell1,
+.container:hover .rightCell2,
+.container:hover .rightCell3,
+.container:hover .rightCell4,
+.container:hover .rightCell5,
+.container:hover .rightCell6,
+.container:hover .rightCell7,
+.container:hover .rightCell8,
+.container:hover .rightCell9 {
+  transform: translate(12px, 7px);
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .topCell1, .topCell2, .topCell3,
+  .topCell4, .topCell5, .topCell6,
+  .topCell7, .topCell8, .topCell9,
+  .leftCell1, .leftCell2, .leftCell3,
+  .leftCell4, .leftCell5, .leftCell6,
+  .leftCell7, .leftCell8, .leftCell9,
+  .rightCell1, .rightCell2, .rightCell3,
+  .rightCell4, .rightCell5, .rightCell6,
+  .rightCell7, .rightCell8, .rightCell9 {
+    transition: none;
+  }
+
+  .container:hover .topCell1,
+  .container:hover .topCell2,
+  .container:hover .topCell3,
+  .container:hover .topCell4,
+  .container:hover .topCell5,
+  .container:hover .topCell6,
+  .container:hover .topCell7,
+  .container:hover .topCell8,
+  .container:hover .topCell9,
+  .container:hover .leftCell1,
+  .container:hover .leftCell2,
+  .container:hover .leftCell3,
+  .container:hover .leftCell4,
+  .container:hover .leftCell5,
+  .container:hover .leftCell6,
+  .container:hover .leftCell7,
+  .container:hover .leftCell8,
+  .container:hover .leftCell9,
+  .container:hover .rightCell1,
+  .container:hover .rightCell2,
+  .container:hover .rightCell3,
+  .container:hover .rightCell4,
+  .container:hover .rightCell5,
+  .container:hover .rightCell6,
+  .container:hover .rightCell7,
+  .container:hover .rightCell8,
+  .container:hover .rightCell9 {
+    transform: none;
+  }
+}
