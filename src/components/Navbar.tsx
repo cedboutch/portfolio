@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
-import logo from '../assets/logo.png';
+import RubikLogo from './RubikLogo'
 
 const Navbar: React.FC = () => {
   const [activeLink, setActiveLink] = useState<string>('')
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.navBrand}>
         <a href="#top">
-          <img src={logo} alt="Cédric Bouchard" className={styles.logo} />
+          <RubikLogo size={70} className={styles.logo} />
         </a>
       </div>
 
