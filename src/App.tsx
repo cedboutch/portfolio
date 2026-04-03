@@ -1,10 +1,12 @@
+import React, { Suspense } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
-import TechStack from './components/TechStack'
-import ResumeSection from './components/ResumeSection'
-import ProjectsSection from './components/ProjectsSection'
 import Footer from './components/Footer'
+
+const TechStack = React.lazy(() => import('./components/TechStack'))
+const ResumeSection = React.lazy(() => import('./components/ResumeSection'))
+const ProjectsSection = React.lazy(() => import('./components/ProjectsSection'))
 
 function App() {
   return (
@@ -12,9 +14,11 @@ function App() {
       <Navbar />
       <main className="main-content">
         <HeroSection />
-        <TechStack />
-        <ResumeSection />
-        <ProjectsSection />
+        <Suspense fallback={null}>
+          <TechStack />
+          <ResumeSection />
+          <ProjectsSection />
+        </Suspense>
       </main>
       <Footer />
     </div>
