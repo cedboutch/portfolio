@@ -1,19 +1,19 @@
 # Portfolio — Cédric Bouchard
 
-Personal portfolio website built with React, TypeScript, and Vite.
+Site web portfolio personnel construit avec React, TypeScript et Vite.
 
-## Tech Stack
+## Technologies
 
-- **Framework:** React 19
-- **Language:** TypeScript
-- **Build Tool:** Vite 8
-- **Styling:** CSS Modules
+- **Framework :** React 19
+- **Langage :** TypeScript
+- **Outil de compilation :** Vite 8
+- **Style :** Modules CSS
 
-## Getting Started
+## Démarrage
 
-### Prerequisites
+### Prérequis
 
-- [Node.js](https://nodejs.org/) (LTS recommended)
+- [Node.js](https://nodejs.org/) (LTS recommandé)
 - npm
 
 ### Installation
@@ -22,25 +22,25 @@ Personal portfolio website built with React, TypeScript, and Vite.
 npm install
 ```
 
-### Development
+### Développement
 
 ```bash
 npm run dev
 ```
 
-### Build
+### Compilation
 
 ```bash
 npm run build
 ```
 
-### Preview Production Build
+### Aperçu de la version de production
 
 ```bash
 npm run preview
 ```
 
-### Lint
+### Linter (Qualité du code)
 
 ```bash
 npm run lint

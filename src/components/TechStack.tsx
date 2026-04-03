@@ -25,7 +25,7 @@ const techCategories: TechCategory[] = [
     ],
   },
   {
-    title: "Frameworks & Librairies",
+    title: "Librairies",
     items: [
       { name: "Node.js", icon: "nodejs" },
       { name: "Vue.js", icon: "vuejs" },
