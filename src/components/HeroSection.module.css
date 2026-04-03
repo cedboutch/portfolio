@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1150px;
+  margin: 0 auto;
   min-height: 80vh;
   padding: 2rem 5%;
   gap: 4rem;
@@ -9,7 +11,7 @@
 
 /* Left content */
 .heroContent {
-  flex: 1;
+  flex: 0 1 auto;
   max-width: 600px;
 }
 
@@ -83,31 +85,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(228, 228, 228, 0.08);
-  color: rgba(228, 228, 228, 0.6);
-  transition: all 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+  will-change: transform, filter;
 }
 
 .socialLink svg {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
 
 .socialLink:hover {
-  background: rgba(168, 218, 220, 0.15);
-  color: #A8DADC;
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.iconBg {
+  fill: #2C2C2C;
+  transition: opacity 0.4s ease;
+}
+
+.socialGithub {
+  color: #FFC1CC;
+}
+
+.socialGithub:hover {
+  filter: brightness(1.08);
+}
+
+.socialLinkedin {
+  color: #FFCE99; /* Pastel yellow orange */
+}
+
+.socialLinkedin:hover {
+  filter: brightness(1.08);
 }
 
 /* Right — circular photo */
 .heroImageContainer {
-  flex: 1;
+  flex: 0 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .imageRing {
@@ -116,7 +142,19 @@
   height: 360px;
   border-radius: 50%;
   padding: 8px;
-  background: linear-gradient(145deg, #A8DADC, #B39CD0, #FFC1CC);
+  background: transparent;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.imageRing::after {
+  content: '';
+  position: absolute;
+  inset: -10%; /* Oversize it so we don't rely on its border-radius while spinning */
+  background: conic-gradient(from 0deg, #A8DADC, #FFC1CC, #B39CD0, #A8DADC);
+  z-index: 0;
+  animation: spin 5s linear infinite;
+  will-change: transform;
 }
 
 .imageRing::before {

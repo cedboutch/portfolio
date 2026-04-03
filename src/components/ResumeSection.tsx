@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./ResumeSection.module.css";
-import benevaLogo from "../assets/benevaLogo.png";
-import idexiaLogo from "../assets/idexiaLogo.png";
-import ulavalLogo from "../assets/ulavalLogo.png";
-import cndfLogo from "../assets/cndfLogo.png";
+import benevaLogo from "../assets/benevaLogo.webp";
+import idexiaLogo from "../assets/idexiaLogo.webp";
+import ulavalLogo from "../assets/ulavalLogo.webp";
+import cndfLogo from "../assets/cndfLogo.webp";
 
 type ResumeTab = "work" | "education";
 
@@ -107,7 +107,7 @@ const ResumeSection: React.FC = () => {
                                 <div className={styles.itemCardContent}>
                                     {item.logo && (
                                         <div className={styles.logoContainer} style={item.logoPadding ? { padding: item.logoPadding } : undefined}>
-                                            <img src={item.logo} alt={`${item.place} logo`} className={styles.companyLogo} />
+                                            <img src={item.logo} alt={`${item.place} logo`} className={styles.companyLogo} loading="lazy" fetchPriority="low" />
                                         </div>
                                     )}
                                     <div className={styles.itemBody}>
@@ -148,7 +148,7 @@ const ResumeSection: React.FC = () => {
                             <article key={`${item.program}-${item.school}`} className={styles.itemCard}>
                                 <div className={styles.itemCardContent}>
                                     <div className={styles.logoContainer}>
-                                        <img src={item.logo} alt={`${item.school} logo`} className={styles.companyLogo} />
+                                        <img src={item.logo} alt={`${item.school} logo`} className={styles.companyLogo} loading="lazy" fetchPriority="low" />
                                     </div>
                                     <div className={styles.itemBody}>
                                         <div className={styles.itemHeader}>

@@ -10,6 +10,34 @@ body {
   background-color: #2C2C2C;
   color: #E4E4E4;
   line-height: 1.5;
+  position: relative;
+}
+
+body::before, body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  width: calc(50% - 575px);
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+  background-size: 48px 48px;
+  background-position: center top;
+  background-image: 
+    linear-gradient(to right, rgba(179, 156, 208, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(179, 156, 208, 0.07) 1px, transparent 1px);
+}
+
+body::before {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+}
+
+body::after {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, black calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to left, black calc(100% - 40px), transparent 100%);
 }
 
 a {

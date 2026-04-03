@@ -1,19 +1,43 @@
 .resumeSection {
   padding: 3rem 5%;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
   font-size: 2.5rem;
   font-weight: 800;
   color: #E4E4E4;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
 }
 
 .resumeBox {
-  border: 1px solid rgba(228, 228, 228, 0.15);
+  position: relative;
   border-radius: 14px;
-  background: rgba(228, 228, 228, 0.03);
+  background: transparent;
   padding: 1.5rem;
+  width: 100%;
+}
+
+.resumeBox::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: conic-gradient(from 0deg, #A8DADC, #FFC1CC, #B39CD0, #A8DADC);
+  z-index: -2;
+}
+
+.resumeBox::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 12px;
+  background: #2C2C2C;
+  z-index: -1;
 }
 
 .tabButtons {
