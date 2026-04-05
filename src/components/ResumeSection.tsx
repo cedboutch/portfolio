@@ -22,9 +22,10 @@ const workItems = [
         place: "Beneva",
         date: "Été 2025",
         details: [
-            "Réalisé des analyses structurées sur des technologies émergentes (IA générative, outils/plateformes), et synthétisé les apprentissages sous forme de présentations.",
-            "Prototypé et intégré des modèles d’intelligence artificielle dans une application web.",
-            "Développé des scripts de tests en Python pour valider les prédictions de modèles d’IA générative.",
+            "Réaliser des analyses structurées sur des technologies émergentes (IA générative, outils/plateformes).",
+            "Synthétiser et présenter des apprentissages et des résultats d’analyse pertinents à plusieurs équipes.",
+            "Prototyper et intégrer des modèles d’intelligence artificielle générative dans une application web.",
+            "Développer des scripts de tests en Python pour valider les prédictions de modèles d’IA générative.",
         ],
         techBadges: [
             { name: "Python", icon: "python" },
@@ -41,12 +42,12 @@ const workItems = [
         place: "Idexia",
         date: "Été 2023 et 2024",
         details: [
-            "Développé un pipeline NLP avec spaCy pour le prétraitement de texte (tokenisation, annotation, normalisation).",
-            "Mis en place des workflows Microsoft 365 (Power Automate, AI Builder, Azure AI Studio) pour automatiser des processus.",
-            "Construit et préparé des jeux de données pour entraîner des modèles sur Hugging Face.",
-            "Conduit des tests d’hypothèses et analysé les résultats en vue d’améliorer en continu les solutions IA.",
-            "Rédigé de la documentation technique et des documents de présentation.",
-            "Présenté les avancées à l’équipe lors des revues de sprint.",
+            "Développer un pipeline NLP avec spaCy pour le prétraitement de texte (tokenisation, annotation, normalisation).",
+            "Mettre en place des workflows avec Power Automate et AI Builder, intégrant des services Azure AI pour automatiser des processus.",
+            "Construire et préparer des jeux de données sur Hugging Face.",
+            "Conduire des tests d’hypothèses et analyser les résultats.",
+            "Rédiger de la documentation technique et des documents de présentation.",
+            "Présenter les avancées à l’équipe lors des revues de sprint.",
         ],
         techBadges: [
             { name: "Python", icon: "python" },
