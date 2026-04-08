@@ -59,14 +59,15 @@
 
 .tabButton:hover {
   color: #E4E4E4;
-  border-color: rgba(179, 156, 208, 0.6);
+  border-color: rgba(168, 213, 162, 0.6);
 }
 
-.activeTab {
-  background: #B39CD0;
+.activeTab,
+.activeTab:hover {
+  background: #A8D5A2;
   color: #2C2C2C;
-  border-color: #B39CD0;
-  box-shadow: 0 4px 12px rgba(179, 156, 208, 0.3);
+  border-color: #A8D5A2;
+  box-shadow: 0 2px 6px rgba(168, 213, 162, 0.15);
 }
 
 .tabContent {
