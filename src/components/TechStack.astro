@@ -1,0 +1,235 @@
+---
+import { getCollection } from 'astro:content'
+import { resolveIcon } from '../lib/icons'
+
+const categories = (await getCollection('tech')).sort(
+  (a, b) => a.data.order - b.data.order
+)
+
+// Flat index across all categories drives the reveal stagger. The old version
+// mutated a counter mid-render to do this; computing it up front removes the
+// dependency on render order.
+let cursor = 0
+const rows = categories.map(({ data }) => ({
+  title: data.title,
+  items: data.items.map((item) => ({
+    ...item,
+    icon: resolveIcon(item.icon, item.variant),
+    index: cursor++,
+  })),
+}))
+---
+
+<section class="section" id="skills">
+  <h2 class="heading">Compétences techniques</h2>
+
+  <div class="categoriesGrid">
+    {
+      rows.map((category) => (
+        <div class="category">
+          <h3 class="categoryLabel">{category.title}</h3>
+          <div class="pillsRow">
+            {category.items.map((item) => (
+              <div
+                class="pill"
+                data-reveal
+                style={`--reveal-delay: calc(${item.index} * var(--stagger-step))`}
+              >
+                {item.icon ? (
+                  <img
+                    src={item.icon.url}
+                    alt=""
+                    class:list={['pillIcon', item.icon.needsBackdrop && 'iconChip']}
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <svg
+                    class="fallbackIcon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                )}
+                <span class="pillText">{item.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: 1rem 5% 4rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .categoriesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Category row */
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 44px;
+  }
+
+  .categoryLabel {
+    flex-shrink: 0;
+    width: 210px;
+    padding-top: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-faint);
+    position: relative;
+    padding-left: 0.85rem;
+  }
+
+  .categoryLabel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-radius: 1px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-pink),
+      var(--accent-lavender)
+    );
+    opacity: 0.6;
+  }
+
+  .pillsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    flex: 1;
+  }
+
+  /* Pill badge — entrance handled by the shared [data-reveal] primitive. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.42rem 0.95rem 0.42rem 0.65rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-faint);
+    background: var(--surface-pill);
+    color: var(--color-text-strong);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: default;
+    transition:
+      transform var(--dur-instant) ease-out,
+      border-color var(--dur-instant) ease-out,
+      box-shadow var(--dur-instant) ease-out,
+      background var(--dur-instant) ease-out;
+  }
+
+  .pill:hover {
+    border-color: var(--hover-lavender-border);
+    background: var(--hover-lavender-bg);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+      0 6px 20px rgba(179, 156, 208, 0.18),
+      0 0 0 1px rgba(179, 156, 208, 0.08);
+  }
+
+  .pillIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  /* Some devicon artwork is near-black (flask, ros) and disappears against the
+     dark page. Give those a light chip so the mark stays legible. */
+  .iconChip {
+    background: rgba(228, 228, 228, 0.92);
+    padding: 2px;
+  }
+
+  .pillText {
+    white-space: nowrap;
+  }
+
+  /* Shown when an icon isn't vendored. */
+  .fallbackIcon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: rgba(228, 228, 228, 0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section {
+      padding: 1rem 4% 3rem;
+    }
+
+    .heading {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .category {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .categoryLabel {
+      width: auto;
+      padding-top: 0;
+      padding-left: 0;
+      text-align: center;
+    }
+
+    .categoryLabel::before {
+      display: none;
+    }
+
+    .pillsRow {
+      justify-content: center;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 0.38rem 0.8rem 0.38rem 0.55rem;
+    }
+  }
+</style>

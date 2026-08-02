@@ -1,0 +1,46 @@
+[
+  {
+    "id": "langages",
+    "title": "Langages",
+    "order": 1,
+    "items": [
+      { "name": "Python", "icon": "python" },
+      { "name": "C/C++", "icon": "cplusplus" },
+      { "name": "Java", "icon": "java" },
+      { "name": "JavaScript", "icon": "javascript" },
+      { "name": "TypeScript", "icon": "typescript" },
+      { "name": "HTML", "icon": "html5" },
+      { "name": "CSS", "icon": "css3" }
+    ]
+  },
+  {
+    "id": "librairies",
+    "title": "Librairies",
+    "order": 2,
+    "items": [
+      { "name": "Node.js", "icon": "nodejs" },
+      { "name": "Vue.js", "icon": "vuejs" },
+      { "name": "React", "icon": "react" },
+      { "name": "PyTorch", "icon": "pytorch" }
+    ]
+  },
+  {
+    "id": "bases-de-donnees",
+    "title": "Bases de données",
+    "order": 3,
+    "items": [
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "MongoDB", "icon": "mongodb" }
+    ]
+  },
+  {
+    "id": "outils",
+    "title": "Outils",
+    "order": 4,
+    "items": [
+      { "name": "Git", "icon": "git" },
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Jupyter Notebooks", "icon": "jupyter" }
+    ]
+  }
+]

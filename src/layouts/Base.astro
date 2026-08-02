@@ -1,0 +1,95 @@
+---
+import '../styles/fonts.css'
+import '../styles/global.css'
+// Imported for its hashed URL so the preload below points at the same file the
+// @font-face rule resolves to.
+import interFont from '../assets/fonts/inter-latin-var.woff2'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Cédric Bouchard | Développeur Logiciel',
+  description = 'Portfolio de Cédric Bouchard, étudiant en génie logiciel à Québec. Découvrez mes projets, compétences et expériences en développement logiciel.',
+} = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Cédric Bouchard',
+  url: 'https://cedricbouchard.dev/',
+  email: 'cedric.bouchard.02@hotmail.com',
+  jobTitle: 'Étudiant en génie logiciel',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Québec',
+    addressCountry: 'CA',
+  },
+  sameAs: [
+    'https://github.com/cedboutch',
+    'https://www.linkedin.com/in/cedric-bouchard',
+  ],
+}
+---
+
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Cédric Bouchard, Cedric Bouchard, développeur logiciel, software developer, génie logiciel, Québec, portfolio"
+    />
+    <meta name="author" content="Cédric Bouchard" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    {/* The font is needed for first paint; without this the browser only
+        discovers it after the CSS parses. */}
+    <link
+      rel="preload"
+      href={interFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:site_name" content="Cédric Bouchard" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Structured Data -->
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+  </head>
+
+  <body>
+    <slot />
+
+    <script>
+      import { initReveal } from '../scripts/reveal'
+      initReveal()
+    </script>
+  </body>
+</html>

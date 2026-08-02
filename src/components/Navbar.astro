@@ -1,0 +1,344 @@
+---
+import RubikLogo from './RubikLogo.astro'
+
+const navItems = [
+  { href: '#about', label: 'À propos' },
+  { href: '#experience', label: 'Expérience' },
+  { href: '#projects', label: 'Projets' },
+]
+---
+
+<nav class="navbar">
+  <div class="navBrand">
+    <a href="#top" aria-label="Retour en haut">
+      <RubikLogo size={70} class="logo" />
+    </a>
+  </div>
+
+  <button
+    class="hamburger"
+    type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="nav-links"
+    data-menu-toggle
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="overlay" data-menu-overlay hidden></div>
+
+  <ul class="navLinks" id="nav-links" data-nav-links>
+    {
+      navItems.map(({ href, label }) => (
+        <li>
+          <a href={href} class="navItem" data-nav-item={href}>
+            {label}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a
+        href="/CV_Cedric_Bouchard.pdf"
+        class="navItem specialBtn"
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+      >
+        Mon CV
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]')
+  const overlay = document.querySelector<HTMLElement>('[data-menu-overlay]')
+  const links = document.querySelector<HTMLElement>('[data-nav-links]')
+
+  if (toggle && overlay && links) {
+    const setMenu = (open: boolean) => {
+      toggle.classList.toggle('hamburgerOpen', open)
+      links.classList.toggle('navLinksOpen', open)
+      overlay.hidden = !open
+      toggle.setAttribute('aria-expanded', String(open))
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu')
+      // Stop the page behind the drawer from scrolling.
+      document.body.style.overflow = open ? 'hidden' : ''
+    }
+
+    toggle.addEventListener('click', () =>
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true')
+    )
+    overlay.addEventListener('click', () => setMenu(false))
+    // Close after tapping a link, since navigation is same-page anchors.
+    links.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setMenu(false)
+    })
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false)
+    })
+  }
+
+  /* Active link follows the section actually in view, rather than whichever
+     link was last clicked. */
+  const navItems = document.querySelectorAll<HTMLAnchorElement>('[data-nav-item]')
+  const sections = [...navItems]
+    .map((a) => document.querySelector(a.dataset.navItem!))
+    .filter((el): el is HTMLElement => el !== null)
+
+  if (sections.length > 0 && 'IntersectionObserver' in window) {
+    const visible = new Set<string>()
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = `#${entry.target.id}`
+          if (entry.isIntersecting) visible.add(id)
+          else visible.delete(id)
+        }
+
+        // When several sections straddle the viewport, highlight the topmost
+        // one so the indicator matches reading position.
+        const active = [...navItems]
+          .map((a) => a.dataset.navItem!)
+          .find((href) => visible.has(href))
+
+        for (const item of navItems) {
+          item.classList.toggle('activeItem', item.dataset.navItem === active)
+        }
+      },
+      { rootMargin: '-100px 0px -55% 0px' }
+    )
+
+    for (const section of sections) observer.observe(section)
+  }
+</script>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    /* Glassmorphism Effect */
+    background: rgba(44, 44, 44, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(228, 228, 228, 0.06);
+  }
+
+  /* Logo */
+  .navBrand a {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: auto;
+    cursor: pointer;
+  }
+
+  /* Nav Links */
+  .navLinks {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Nav Item — parentheses indicator */
+  .navItem {
+    position: relative;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(228, 228, 228, 0.55);
+    transition: color var(--dur-base) ease;
+    padding: 0.3rem 0;
+  }
+
+  .navItem::before,
+  .navItem::after {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 1.15rem;
+    transition:
+      opacity var(--dur-base) ease,
+      transform var(--dur-base) ease,
+      color var(--dur-base) ease;
+    opacity: 0;
+  }
+
+  .navItem::before {
+    content: '(';
+    margin-right: 0.4rem;
+    transform: translateX(6px);
+  }
+
+  .navItem::after {
+    content: ')';
+    margin-left: 0.4rem;
+    transform: translateX(-6px);
+  }
+
+  /* Hover — reveal parentheses */
+  .navItem:hover {
+    color: var(--color-text);
+  }
+
+  .navItem:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-teal);
+  }
+
+  .navItem:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-pink);
+  }
+
+  /* Active — parentheses stay visible */
+  .navItem.activeItem {
+    color: var(--color-text);
+  }
+
+  .navItem.activeItem::before {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-teal);
+  }
+
+  .navItem.activeItem::after {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-pink);
+  }
+
+  /* CV button */
+  .specialBtn {
+    background: var(--accent-lavender);
+    color: var(--color-bg) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    transition:
+      background var(--dur-base) ease,
+      transform var(--dur-base) ease,
+      box-shadow var(--dur-base) ease;
+  }
+
+  .specialBtn::before,
+  .specialBtn::after {
+    display: none;
+  }
+
+  .specialBtn:hover {
+    background: var(--accent-pink);
+    color: var(--color-bg) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 193, 204, 0.25);
+  }
+
+  /* Hamburger button — hidden on desktop */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition:
+      transform var(--dur-base) ease,
+      opacity var(--dur-base) ease;
+  }
+
+  .hamburger.hamburgerOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.hamburgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.hamburgerOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Overlay behind mobile menu */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+
+  .overlay[hidden] {
+    display: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .logo {
+      --logo-size: 50px;
+    }
+
+    .navLinks {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75%;
+      max-width: 320px;
+      height: 100vh;
+      flex-direction: column;
+      padding: 6rem 2rem 2rem;
+      gap: 2rem;
+      background: rgba(44, 44, 44, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-left: 1px solid rgba(228, 228, 228, 0.06);
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform var(--dur-base) var(--ease-in-out);
+    }
+
+    .navLinks.navLinksOpen {
+      transform: translateX(0);
+    }
+
+    .navItem {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .specialBtn {
+      text-align: center;
+      width: 100%;
+    }
+  }
+</style>

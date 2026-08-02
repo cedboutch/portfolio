@@ -1,0 +1,55 @@
+---
+import RubikLogo from './RubikLogo.astro'
+
+// Built at deploy time rather than in the browser, so the year is baked into
+// the HTML instead of costing a `new Date()` on the client.
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+  <div class="divider"></div>
+  <a href="#top" class="logoLink" aria-label="Retour en haut">
+    <RubikLogo size={120} />
+  </a>
+  <p class="copyright">&copy; {year} Cédric Bouchard</p>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 5% 2rem;
+    margin-top: 4rem;
+  }
+
+  /* Gradient divider line — uses the accent colors from the navbar */
+  .divider {
+    width: 120px;
+    height: 2px;
+    border-radius: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-teal),
+      var(--accent-lavender),
+      var(--accent-pink)
+    );
+    margin-bottom: 2.5rem;
+    opacity: 0.6;
+  }
+
+  /* Logo — large and centered */
+  .logoLink {
+    display: block;
+  }
+
+  /* Copyright */
+  .copyright {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(228, 228, 228, 0.3);
+    font-weight: 300;
+  }
+</style>

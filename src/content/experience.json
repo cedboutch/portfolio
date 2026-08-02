@@ -1,0 +1,72 @@
+[
+  {
+    "id": "beneva-innovateur",
+    "type": "work",
+    "order": 1,
+    "role": "Stagiaire Innovateur",
+    "place": "Beneva",
+    "date": "Été 2025",
+    "details": [
+      "Réaliser des analyses structurées sur des technologies émergentes (IA générative, outils/plateformes).",
+      "Synthétiser et présenter des apprentissages et des résultats d’analyse pertinents à plusieurs équipes.",
+      "Prototyper et intégrer des modèles d’intelligence artificielle générative dans une application web.",
+      "Développer des scripts de tests en Python pour valider les prédictions de modèles d’IA générative."
+    ],
+    "techBadges": [
+      { "name": "Python", "icon": "python" },
+      { "name": "Vue.js", "icon": "vuejs" },
+      { "name": "TypeScript", "icon": "typescript" },
+      {
+        "name": "AWS",
+        "icon": "amazonwebservices",
+        "variant": "original-wordmark"
+      }
+    ],
+    "logo": "../assets/benevaLogo.webp",
+    "logoPadding": "2px",
+    "color": "#B06FE8"
+  },
+  {
+    "id": "idexia-rd-ia",
+    "type": "work",
+    "order": 2,
+    "role": "Stagiaire en R&D dans le domaine de l’intelligence artificielle",
+    "place": "Idexia",
+    "date": "Été 2023 et 2024",
+    "details": [
+      "Développer un pipeline NLP avec spaCy pour le prétraitement de texte (tokenisation, annotation, normalisation).",
+      "Mettre en place des workflows avec Power Automate et AI Builder, intégrant des services Azure AI pour automatiser des processus.",
+      "Construire et préparer des jeux de données sur Hugging Face.",
+      "Conduire des tests d’hypothèses et analyser les résultats.",
+      "Rédiger de la documentation technique et des documents de présentation.",
+      "Présenter les avancées à l’équipe lors des revues de sprint."
+    ],
+    "techBadges": [
+      { "name": "Python", "icon": "python" },
+      { "name": "PyTorch", "icon": "pytorch" },
+      { "name": "Azure", "icon": "azure" }
+    ],
+    "logo": "../assets/idexiaLogo.webp",
+    "color": "#6B8CFF"
+  },
+  {
+    "id": "ulaval-genie-logiciel",
+    "type": "education",
+    "order": 1,
+    "role": "Baccalauréat en Génie Logiciel",
+    "place": "Université Laval",
+    "date": "2022 - Aujourd'hui",
+    "logo": "../assets/ulavalLogo.webp",
+    "color": "#C4333E"
+  },
+  {
+    "id": "cndf-sciences-nature",
+    "type": "education",
+    "order": 2,
+    "role": "Diplôme d'Études Collégiales en Sciences de la Nature",
+    "place": "Collège Notre-Dame-de-Foy (CNDF)",
+    "date": "2020 - 2022",
+    "logo": "../assets/cndfLogo.webp",
+    "color": "#5B9BD5"
+  }
+]
