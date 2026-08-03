@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Inter — self-hosted
+
+   One variable file covering weights 100–900 (the site uses 300/400/500/600/800),
+   `latin` subset only. The latin range is U+0000–00FF plus punctuation, which
+   already covers every French accented character used on this site — é à è ç
+   ù û î ô œ — so the `latin-ext` subset (U+0100+, Central/Eastern European)
+   would be 85KB of glyphs that never render.
+
+   Previously the site asked for 'Inter' in its font stack but never loaded it,
+   so it silently fell back to system-ui.
+
+   Lives in src/ rather than public/ so Vite content-hashes the filename, which
+   is what makes the immutable one-year cache header in vercel.json safe.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../assets/fonts/inter-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}

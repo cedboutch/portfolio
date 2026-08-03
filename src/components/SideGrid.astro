@@ -1,0 +1,154 @@
+---
+// Decorative dotted gutters flanking the content column. A radial spotlight
+// tracks the cursor and reveals a brighter grid layer underneath.
+---
+
+<div class="sideGrid sideGridLeft" data-side-grid aria-hidden="true"></div>
+<div class="sideGrid sideGridRight" data-side-grid aria-hidden="true"></div>
+
+<script>
+  const grids = document.querySelectorAll<HTMLElement>('[data-side-grid]')
+
+  if (grids.length > 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (const grid of grids) {
+      // The previous implementation called getBoundingClientRect() on every
+      // mousemove — a forced layout read per event. Cache it instead and
+      // recompute only when the geometry can actually change.
+      let rect = grid.getBoundingClientRect()
+      let frame = 0
+      let pending: { x: number; y: number } | null = null
+
+      const invalidate = () => {
+        rect = grid.getBoundingClientRect()
+      }
+      window.addEventListener('resize', invalidate, { passive: true })
+      window.addEventListener('scroll', invalidate, { passive: true })
+
+      grid.addEventListener(
+        'mousemove',
+        (e) => {
+          pending = { x: e.clientX - rect.left, y: e.clientY - rect.top }
+          // Coalesce bursts of events into one write per animation frame.
+          if (frame) return
+          frame = requestAnimationFrame(() => {
+            frame = 0
+            if (!pending) return
+            grid.style.setProperty('--mouse-x', `${pending.x}px`)
+            grid.style.setProperty('--mouse-y', `${pending.y}px`)
+          })
+        },
+        { passive: true }
+      )
+    }
+  }
+</script>
+
+<style>
+  .sideGrid {
+    position: fixed;
+    top: 0;
+    /* Was `calc(50% - 575px)`, which resolves negative below a 1150px viewport.
+       max() clamps it to zero so the element simply collapses instead. */
+    width: max(0px, calc((100vw - var(--content-width)) / 2));
+    height: 100vh;
+    z-index: 10;
+    /* Decorative only — never intercept clicks meant for the page. */
+    pointer-events: none;
+  }
+
+  /* Re-enable hit testing just for the spotlight, and only where the gutter
+     actually has width. */
+  @media (min-width: 1151px) {
+    .sideGrid {
+      pointer-events: auto;
+    }
+  }
+
+  .sideGrid::before,
+  .sideGrid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: 48px 48px;
+    background-position: center top;
+    transition:
+      opacity var(--dur-base) ease,
+      filter var(--dur-base) ease;
+  }
+
+  .sideGrid::before {
+    background-image: linear-gradient(
+        to right,
+        rgba(179, 156, 208, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(179, 156, 208, 0.07) 1px, transparent 1px);
+    opacity: 1;
+  }
+
+  .sideGrid::after {
+    opacity: 0;
+    mask-image: radial-gradient(
+      120px at var(--mouse-x, 50%) var(--mouse-y, -100%),
+      black 0%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      120px at var(--mouse-x, 50%) var(--mouse-y, -100%),
+      black 0%,
+      transparent 100%
+    );
+  }
+
+  .sideGridLeft {
+    left: 0;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+  }
+
+  .sideGridLeft::after {
+    background-image: linear-gradient(
+        to right,
+        rgba(168, 218, 220, 0.4) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(179, 156, 208, 0.4) 1px, transparent 1px);
+    box-shadow: inset 0 0 50px rgba(168, 218, 220, 0.05);
+  }
+
+  .sideGridRight {
+    right: 0;
+    -webkit-mask-image: linear-gradient(
+      to left,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to left,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+  }
+
+  .sideGridRight::after {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 193, 204, 0.4) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 206, 153, 0.4) 1px, transparent 1px);
+    box-shadow: inset 0 0 50px rgba(255, 193, 204, 0.05);
+  }
+
+  .sideGrid:hover::after {
+    opacity: 1;
+  }
+</style>

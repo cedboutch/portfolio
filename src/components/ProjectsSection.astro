@@ -1,0 +1,238 @@
+---
+import { getCollection } from 'astro:content'
+import { resolveIcon } from '../lib/icons'
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+)
+---
+
+<section id="projects" class="projectsSection">
+  <h2 class="heading">Mes projets</h2>
+
+  <div class="projectGrid">
+    {
+      projects.map(({ data }, i) => (
+        <article
+          class="projectCard"
+          data-reveal
+          style={`--accent-color: ${data.accentColor}; --reveal-delay: calc(${i} * var(--stagger-step))`}
+        >
+          <div class="cardHeader">
+            <h3 class="cardTitle">{data.title}</h3>
+            {data.inProgress && <span class="inProgressBadge">en cours</span>}
+          </div>
+          <span class="languageLabel">{data.language}</span>
+          <p class="description">{data.description}</p>
+          <div class="techBadges">
+            {data.techBadges.map((badge) => {
+              const icon = resolveIcon(badge.icon, badge.variant)
+              return (
+                <span class="techBadge">
+                  {icon && (
+                    <img
+                      src={icon.url}
+                      alt=""
+                      class:list={['techBadgeIcon', icon.needsBackdrop && 'iconChip']}
+                      width="16"
+                      height="16"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <span>{badge.name}</span>
+                </span>
+              )
+            })}
+          </div>
+          {data.link && (
+            <a
+              class="projectLink"
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Accéder au site web ↗
+            </a>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .projectsSection {
+    padding: 3rem 5%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .projectGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .projectCard {
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 1.2rem;
+    background: var(--surface-raised);
+    transition:
+      transform var(--dur-fast) ease,
+      border-color var(--dur-fast) ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .projectCard:hover {
+    border-color: rgba(179, 156, 208, 0.4);
+    border-top-color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .languageLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  .description {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .inProgressBadge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    background: rgba(255, 179, 186, 0.15);
+    color: var(--accent-coral);
+    border: 1px solid rgba(255, 179, 186, 0.3);
+    font-weight: 600;
+    margin-left: auto;
+    animation: pulseBadge 2s infinite ease-in-out;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .techBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .techBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.8rem 0.35rem 0.55rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-faint);
+    background: var(--surface-pill);
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: default;
+    transition:
+      border-color var(--dur-instant) ease-out,
+      background var(--dur-instant) ease-out;
+  }
+
+  .techBadge:hover {
+    border-color: var(--hover-lavender-border);
+    background: var(--hover-lavender-bg);
+  }
+
+  .techBadgeIcon {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .iconChip {
+    background: rgba(228, 228, 228, 0.92);
+    padding: 1px;
+  }
+
+  .projectLink {
+    font-size: 0.8rem;
+    color: var(--accent-teal);
+    text-decoration: none;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: color var(--dur-fast) ease;
+  }
+
+  .projectLink:hover {
+    color: var(--accent-pink);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1024px) {
+    .projectGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .projectGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @keyframes pulseBadge {
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 179, 186, 0.4);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 0 5px 1px rgba(255, 179, 186, 0.1);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 179, 186, 0);
+    }
+  }
+
+  /* Infinite pulse — stop it entirely rather than just shortening the cycle. */
+  @media (prefers-reduced-motion: reduce) {
+    .inProgressBadge {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
